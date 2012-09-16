@@ -2,9 +2,12 @@ module Middleman
   module Syntax
     class << self
       def registered(app, options_hash={})
-        require 'middleman-syntax/helper'
         require 'pygments'
+
         app.send :include, Helper
+
+        require 'middleman-core/renderers/redcarpet'
+        Middleman::Renderers::MiddlemanRedcarpetHTML.send :include, MarkdownCodeRenderer
       end
       alias :included :registered
     end
@@ -26,6 +29,10 @@ module Middleman
       #
       # @param [String] language the Pygments lexer to use
       def code(language, &block)
+        # Note: Language is required because pygments.rb currently
+        # segfaults on Mac OS X when no lexer is specified:
+        # https://github.com/tmm1/pygments.rb/issues/18
+
         # Save current buffer for later
         @_out_buf, _buf_was = "", @_out_buf
 
@@ -41,6 +48,12 @@ module Middleman
         end
 
         concat_content Pygments.highlight(content, :lexer => language)
+      end
+    end
+
+    module MarkdownCodeRenderer
+      def block_code(code, language)
+        Pygments.highlight(code, :lexer => language)
       end
     end
   end
