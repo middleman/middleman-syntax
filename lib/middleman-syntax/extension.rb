@@ -1,0 +1,47 @@
+module Middleman
+  module Syntax
+    class << self
+      def registered(app, options_hash={})
+        require 'middleman-syntax/helper'
+        require 'pygments'
+        app.send :include, Helper
+      end
+      alias :included :registered
+    end
+
+    module Helper
+
+      # Output highlighted code. Use like:
+      #
+      #    <% code('ruby') do %>
+      #      my code
+      #    <% end %>
+      #
+      # To produce the following structure:
+      #
+      #    <div class="highlight">
+      #      <pre>#{your code}
+      #      </pre>
+      #    </div>
+      #
+      # @param [String] language the Pygments lexer to use
+      def code(language, &block)
+        # Save current buffer for later
+        @_out_buf, _buf_was = "", @_out_buf
+
+        begin
+          content = if block_given?
+            capture_html(&block)
+          else
+            ""
+          end
+        ensure
+          # Reset stored buffer
+          @_out_buf = _buf_was
+        end
+
+        concat_content Pygments.highlight(content, :lexer => language)
+      end
+    end
+  end
+end
