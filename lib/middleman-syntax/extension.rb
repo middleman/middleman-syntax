@@ -28,11 +28,7 @@ module Middleman
       #    </div>
       #
       # @param [String] language the Pygments lexer to use
-      def code(language, &block)
-        # Note: Language is required because pygments.rb currently
-        # segfaults on Mac OS X when no lexer is specified:
-        # https://github.com/tmm1/pygments.rb/issues/18
-
+      def code(language=nil, &block)
         # Save current buffer for later
         @_out_buf, _buf_was = "", @_out_buf
 
