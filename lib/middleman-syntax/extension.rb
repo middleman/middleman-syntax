@@ -1,8 +1,16 @@
 module Middleman
   module Syntax
     class << self
+
+      def options
+        @@options
+      end
+
       def registered(app, options_hash={})
         require 'pygments'
+
+        @@options = options_hash
+        yield @@options if block_given?
 
         app.send :include, Helper
 
@@ -43,13 +51,13 @@ module Middleman
           @_out_buf = _buf_was
         end
 
-        concat_content Pygments.highlight(content, :lexer => language)
+        concat_content Pygments.highlight(code, :lexer => language, :options => ::Middleman::Syntax.options)
       end
     end
 
     module MarkdownCodeRenderer
       def block_code(code, language)
-        Pygments.highlight(code, :lexer => language)
+        Pygments.highlight(code, :lexer => language, :options => ::Middleman::Syntax.options)
       end
     end
   end
