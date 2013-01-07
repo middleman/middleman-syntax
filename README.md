@@ -17,6 +17,17 @@ Add `middleman-syntax` to your `Gemfile`, run `bundle install`, then open your `
 activate :syntax
 ```
 
+You can also pass options to pygments:
+
+```
+activate :syntax,
+         :linenos => 'inline',
+         :anchorlinenos => true,
+         :linenostart => 2
+```
+
+See the [pygments documentation](http://pygments.org/docs/formatters/) for a full list of possible options.
+
 # Usage
 
 The extension adds a new `code` helper to Middleman that you can use from your templates:
