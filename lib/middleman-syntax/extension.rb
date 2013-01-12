@@ -51,13 +51,15 @@ module Middleman
           @_out_buf = _buf_was
         end
 
-        concat_content Pygments.highlight(code, :lexer => language, :options => ::Middleman::Syntax.options)
+        options = ::Middleman::Syntax.options.merge :lexer => language
+        concat_content Pygments.highlight(code, :options => options)
       end
     end
 
     module MarkdownCodeRenderer
       def block_code(code, language)
-        Pygments.highlight(code, :lexer => language, :options => ::Middleman::Syntax.options)
+        options = ::Middleman::Syntax.options.merge :lexer => language
+        Pygments.highlight(code, :options => options)
       end
     end
   end
