@@ -58,7 +58,8 @@ module Middleman
 
     module MarkdownCodeRenderer
       def block_code(code, language)
-        options = ::Middleman::Syntax.options.merge :lexer => language
+        options = ::Middleman::Syntax.options
+        options.merge :lexer => language if language
         Pygments.highlight(code, :options => options)
       end
     end
