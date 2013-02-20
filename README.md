@@ -40,7 +40,9 @@ end
 <% end %>
 ```
 
-That'll produce syntax-highlighted HTML wrapped in a `<pre>` tag, wrapped in `<div class="hightlight">`. You can style this with any CSS that works on Pygments output.
+That'll produce syntax-highlighted HTML wrapped in a `<pre>` tag, wrapped in `<div class="hightlight">`. You can style this with any CSS that works on Pygments output. 
+
+**Note** that on a default (i.e. unstyled) Middleman project, it will appear as if `middleman-syntax` isn't working, since none of the Pygments styles have any CSS applied! Open the browser Developer Tools to verify the code is being syntax highlighted.
 
 The extension also makes code blocks in Markdown highlight code. Make sure you're using RedCarpet as your Markdown engine (in `config.rb`):
 
