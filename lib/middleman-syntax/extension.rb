@@ -14,8 +14,24 @@ module Middleman
 
         app.send :include, Helper
 
-        require 'middleman-core/renderers/redcarpet'
-        Middleman::Renderers::MiddlemanRedcarpetHTML.send :include, MarkdownCodeRenderer
+        begin
+          require 'redcarpet'
+          require 'middleman-core/renderers/redcarpet'
+          Middleman::Renderers::MiddlemanRedcarpetHTML.send :include, MarkdownCodeRenderer
+        rescue LoadError
+        end
+
+        begin
+          require 'kramdown'
+          Kramdown::Converter::Html.class_eval do
+            def convert_codeblock(el, indent)
+              attr = el.attr.dup
+              lang = (extract_code_language!(attr) || :plain).to_sym
+              Pygments.highlight(el.value, :lexer => lang).chomp
+            end
+          end
+        rescue LoadError
+        end
       end
       alias :included :registered
     end
