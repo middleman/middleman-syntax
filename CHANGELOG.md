@@ -1,3 +1,13 @@
+master
+------
+
+* Support Kramdown as Markdown engine in addition to Redcarpet.
+
+1.1.1
+-----
+
+* Properly merge language attribute for Markdown. #14
+
 1.1.0
 -----
 

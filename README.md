@@ -44,14 +44,18 @@ That'll produce syntax-highlighted HTML wrapped in a `<pre>` tag, wrapped in `<d
 
 **Note** that on a default (i.e. unstyled) Middleman project, it will appear as if `middleman-syntax` isn't working, since none of the Pygments styles have any CSS applied! Open the browser Developer Tools to verify the code is being syntax highlighted.
 
-The extension also makes code blocks in Markdown highlight code. Make sure you're using RedCarpet as your Markdown engine (in `config.rb`):
+The extension also makes code blocks in Markdown highlight code. Make sure you're using RedCarpet or Kramdown as your Markdown engine (in `config.rb`):
 
 ```ruby
 set :markdown_engine, :redcarpet
 set :markdown, :fenced_code_blocks => true, :smartypants => true
+
+# OR
+
+set :markdown_engine, :kramdown
 ```
 
-Now your Markdown will work just like it does [on GitHub](http://github.github.com/github-flavored-markdown/) - you can write something like this:
+Now your Markdown will work just like it does [on GitHub](http://github.github.com/github-flavored-markdown/) - you can write something like this with Redcarpet:
 
 <pre>
 ```ruby
@@ -59,6 +63,16 @@ def my_cool_method(message)
   puts message
 end
 ```
+</pre>
+
+or with Kramdown:
+
+<pre>
+~~~ ruby
+def my_cool_method(message)
+  puts message
+end
+~~~
 </pre>
 
 # Bug Reports
