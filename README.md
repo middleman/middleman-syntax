@@ -38,7 +38,7 @@ end
 <% end %>
 ```
 
-That'll produce syntax-highlighted HTML wrapped in a `<pre>` tag, wrapped in `<div class="highlight ruby">`.
+That'll produce syntax-highlighted HTML wrapped in `<pre class="highlight ruby">`.
 
 # CSS
 

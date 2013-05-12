@@ -1,7 +1,9 @@
-master
+1.2.0
 ------
 
 * Support Kramdown as Markdown engine in addition to Redcarpet.
+* Switch to Rouge from Pygments.rb
+* Fix bugs around setting language options.
 
 1.1.1
 -----
