@@ -16,5 +16,5 @@ Gem::Specification.new do |s|
   s.require_paths = ["lib"]
 
   s.add_runtime_dependency("middleman-core", "~> 3.0")
-  s.add_runtime_dependency("pygments.rb", "~> 0.3")
+  s.add_runtime_dependency("rouge", "~> 0.3.0")
 end

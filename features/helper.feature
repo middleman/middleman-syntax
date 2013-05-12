@@ -4,4 +4,4 @@ Feature: Syntax highlighting with the "code" helper method
     Given the Server is running at "test-app"
     When I go to "/code_html.html"
     Then I should see '<span class="k">def</span>'
-    Then I should see '<span class="n">This</span>'
+    Then I should see '<pre class="highlight text">This is some code'

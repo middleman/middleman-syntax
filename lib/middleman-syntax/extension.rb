@@ -7,7 +7,7 @@ module Middleman
       end
 
       def registered(app, options_hash={})
-        require 'pygments'
+        require 'rouge'
 
         @@options = options_hash
         yield @@options if block_given?
@@ -27,9 +27,7 @@ module Middleman
               def convert_codeblock(el, indent)
                 attr = el.attr.dup
                 language = extract_code_language!(attr)
-                opts = ::Middleman::Syntax.options.dup
-                opts.merge!(:lexer => language) if language
-                Pygments.highlight(el.value, opts)
+                Middleman::Syntax::Highlighter.highlight(el.value, language)
               end
             end
           rescue LoadError
@@ -37,6 +35,16 @@ module Middleman
         end
       end
       alias :included :registered
+    end
+
+    module Highlighter
+      # A helper module for highlighting code
+      def self.highlight(code, language)
+        opts = ::Middleman::Syntax.options.dup
+        lexer = Rouge::Lexer.find_fancy(language, code) || Rouge::Lexers::Text
+        formatter = Rouge::Formatters::HTML.new(opts.reverse_merge({ :css_class => "highlight #{lexer.tag}" }))
+        formatter.format(lexer.lex(code, opts))
+      end
     end
 
     module Helper
@@ -70,17 +78,13 @@ module Middleman
           @_out_buf = _buf_was
         end
 
-        opts = ::Middleman::Syntax.options.dup
-        opts.merge!(:lexer => language) if language
-        concat_content Pygments.highlight(content, :options => opts)
+        concat_content Middleman::Syntax::Highlighter.highlight(content, language)
       end
     end
 
     module MarkdownCodeRenderer
       def block_code(code, language)
-        opts = ::Middleman::Syntax.options.dup
-        opts.merge! :lexer => language if language
-        Pygments.highlight(code, :options => opts)
+        Middleman::Syntax::Highlighter.highlight(code, language)
       end
     end
   end

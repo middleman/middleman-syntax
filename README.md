@@ -1,6 +1,6 @@
 # middleman-syntax
 
-middleman-syntax is an extension for the [Middleman](http://middlemanapp.com) static site generator that adds syntax highlighting via [Pygments](http://pygments.org/).
+middleman-syntax is an extension for the [Middleman](http://middlemanapp.com) static site generator that adds syntax highlighting via [Rouge](https://github.com/jayferd/rouge).
 
 # Install
 If you're just getting started, install the `middleman` gem and generate a new project:
@@ -17,7 +17,7 @@ Add `middleman-syntax` to your `Gemfile`, run `bundle install`, then open your `
 activate :syntax
 ```
 
-You can also pass options to pygments:
+You can also pass options to Rouge:
 
 ```
 activate :syntax,
@@ -26,9 +26,7 @@ activate :syntax,
          :linenostart => 2
 ```
 
-See the [pygments documentation](http://pygments.org/docs/formatters/) for a full list of possible options.
-
-# Usage
+# Helper
 
 The extension adds a new `code` helper to Middleman that you can use from your templates:
 
@@ -40,11 +38,23 @@ end
 <% end %>
 ```
 
-That'll produce syntax-highlighted HTML wrapped in a `<pre>` tag, wrapped in `<div class="hightlight">`. You can style this with any CSS that works on Pygments output. 
+That'll produce syntax-highlighted HTML wrapped in a `<pre>` tag, wrapped in `<div class="highlight ruby">`.
 
-**Note** that on a default (i.e. unstyled) Middleman project, it will appear as if `middleman-syntax` isn't working, since none of the Pygments styles have any CSS applied! Open the browser Developer Tools to verify the code is being syntax highlighted.
+# CSS
 
-The extension also makes code blocks in Markdown highlight code. Make sure you're using RedCarpet or Kramdown as your Markdown engine (in `config.rb`):
+On a default (i.e. unstyled) Middleman project, it will appear as if `middleman-syntax` isn't working, since obviously no CSS has been applied to color your code. You can use any Pygments-compatible stylesheet to style your code.
+
+You can also let Rouge generate some CSS for you by creating a new stylesheet with a `.css.erb` extension in your Middleman project, and then including:
+
+```erb
+<%= Rouge::Themes::ThankfulEyes.render(:scope => '.highlight') %>
+```
+
+Rouge has `ThankfulEyes`, `Colorful`, `Base16`, `Solarized` (like Octopress), and `Monokai` themes.
+
+# Markdown
+
+The extension also makes code blocks in Markdown produce highlighted code. Make sure you're using RedCarpet or Kramdown as your Markdown engine (in `config.rb`):
 
 ```ruby
 set :markdown_engine, :redcarpet
