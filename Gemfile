@@ -1,4 +1,4 @@
-source :rubygems
+source 'https://rubygems.org'
 
 git "git://github.com/middleman/middleman.git" do
   # gem "middleman"
@@ -8,6 +8,10 @@ end
 
 # Specify your gem's dependencies in middleman-blog.gemspec
 gemspec
+
+gem 'padrino-helpers'
+gem 'kramdown'
+gem 'redcarpet'
 
 group :development do
   gem "rake",     "~> 0.9.2"

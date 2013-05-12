@@ -14,23 +14,26 @@ module Middleman
 
         app.send :include, Helper
 
-        begin
-          require 'redcarpet'
-          require 'middleman-core/renderers/redcarpet'
-          Middleman::Renderers::MiddlemanRedcarpetHTML.send :include, MarkdownCodeRenderer
-        rescue LoadError
-        end
-
-        begin
-          require 'kramdown'
-          Kramdown::Converter::Html.class_eval do
-            def convert_codeblock(el, indent)
-              attr = el.attr.dup
-              lang = (extract_code_language!(attr) || :plain).to_sym
-              Pygments.highlight(el.value, :lexer => lang).chomp
-            end
+        if app.markdown_engine == :redcarpet
+          begin
+            require 'middleman-core/renderers/redcarpet'
+            Middleman::Renderers::MiddlemanRedcarpetHTML.send :include, MarkdownCodeRenderer
+          rescue LoadError
           end
-        rescue LoadError
+        else
+          begin
+            require 'kramdown'
+            Kramdown::Converter::Html.class_eval do
+              def convert_codeblock(el, indent)
+                attr = el.attr.dup
+                language = extract_code_language!(attr)
+                opts = ::Middleman::Syntax.options.dup
+                opts.merge!(:lexer => language) if language
+                Pygments.highlight(el.value, opts)
+              end
+            end
+          rescue LoadError
+          end
         end
       end
       alias :included :registered
@@ -67,16 +70,17 @@ module Middleman
           @_out_buf = _buf_was
         end
 
-        options = ::Middleman::Syntax.options.merge :lexer => language
-        concat_content Pygments.highlight(code, :options => options)
+        opts = ::Middleman::Syntax.options.dup
+        opts.merge!(:lexer => language) if language
+        concat_content Pygments.highlight(content, :options => opts)
       end
     end
 
     module MarkdownCodeRenderer
       def block_code(code, language)
-        options = ::Middleman::Syntax.options
-        options.merge! :lexer => language if language
-        Pygments.highlight(code, :options => options)
+        opts = ::Middleman::Syntax.options.dup
+        opts.merge! :lexer => language if language
+        Pygments.highlight(code, :options => opts)
       end
     end
   end
