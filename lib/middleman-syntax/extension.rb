@@ -14,14 +14,11 @@ module Middleman
 
         app.send :include, Helper
 
-        if app.markdown_engine == :redcarpet
-          begin
+        app.after_configuration do
+          if markdown_engine == :redcarpet
             require 'middleman-core/renderers/redcarpet'
             Middleman::Renderers::MiddlemanRedcarpetHTML.send :include, MarkdownCodeRenderer
-          rescue LoadError
-          end
-        else
-          begin
+          elsif markdown_engine == :kramdown
             require 'kramdown'
             Kramdown::Converter::Html.class_eval do
               def convert_codeblock(el, indent)
@@ -30,7 +27,6 @@ module Middleman
                 Middleman::Syntax::Highlighter.highlight(el.value, language)
               end
             end
-          rescue LoadError
           end
         end
       end

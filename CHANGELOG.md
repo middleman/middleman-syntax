@@ -1,5 +1,10 @@
+1.2.1
+-----
+
+* Restore compatibility with Middleman 3.0.x series.
+
 1.2.0
-------
+-----
 
 * Support Kramdown as Markdown engine in addition to Redcarpet.
 * Switch to Rouge from Pygments.rb
