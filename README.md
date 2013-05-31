@@ -6,9 +6,9 @@
 
 If you're just getting started, install the `middleman` gem and generate a new project:
 
-```
-gem install middleman
-middleman init MY_PROJECT
+```bash
+$ gem install middleman
+$ middleman init MY_PROJECT
 ```
 
 If you already have a Middleman project: Add `gem "middleman-syntax"` to your `Gemfile` and run `bundle install`.
@@ -17,13 +17,13 @@ If you already have a Middleman project: Add `gem "middleman-syntax"` to your `G
 
 ## Configuration
 
-```
+```ruby
 activate :syntax
 ```
 
 You can also pass options to Rouge:
 
-```
+```ruby
 activate :syntax,
          :linenos => 'inline',
          :anchorlinenos => true,
@@ -54,7 +54,7 @@ You can also let Rouge generate some CSS for you by creating a new stylesheet wi
 <%= Rouge::Themes::ThankfulEyes.render(:scope => '.highlight') %>
 ```
 
-Rouge has `ThankfulEyes`, `Colorful`, `Base16`, `Solarized` (like Octopress), and `Monokai` themes.
+Rouge has `ThankfulEyes`, `Colorful`, `Base16` and `Github` themes.
 
 ## Markdown
 
