@@ -6,7 +6,7 @@
 
 If you're just getting started, install the `middleman` gem and generate a new project:
 
-```
+```bash
 gem install middleman
 middleman init MY_PROJECT
 ```
@@ -17,13 +17,13 @@ If you already have a Middleman project: Add `gem "middleman-syntax"` to your `G
 
 ## Configuration
 
-```
+```ruby
 activate :syntax
 ```
 
 You can also pass options to Rouge:
 
-```
+```ruby
 activate :syntax,
          :linenos => 'inline',
          :anchorlinenos => true,
@@ -54,7 +54,7 @@ You can also let Rouge generate some CSS for you by creating a new stylesheet wi
 <%= Rouge::Themes::ThankfulEyes.render(:scope => '.highlight') %>
 ```
 
-Rouge has `ThankfulEyes`, `Colorful`, `Base16`, `Solarized` (like Octopress), and `Monokai` themes.
+Rouge has `ThankfulEyes`, `Colorful`, `GitHub`, `Base16`, `Base16::Solarized` (like Octopress), and `Base16::Monokai` themes.
 
 ## Markdown
 
@@ -88,6 +88,17 @@ def my_cool_method(message)
 end
 ~~~
 </pre>
+
+## Indentation Problems
+
+Some templating languages, like Haml, will indent your HTML for you,
+which will mess up code formatted in `<pre>` tags. When
+using Haml, either use the
+[`find_and_preserve`](http://haml.info/docs/yardoc/Haml/Helpers.html#find_and_preserve-instance_method)
+helper, the
+[`:preserve`](http://haml.info/docs/yardoc/file.REFERENCE.html#preserve-filter)
+filter, or add `set :haml, { ugly: true }` in your `config.rb` to turn off
+Haml's automatic indentation.
 
 ## Build & Dependency Status
 
