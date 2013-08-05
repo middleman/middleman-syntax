@@ -24,10 +24,7 @@ activate :syntax
 You can also pass options to Rouge:
 
 ```ruby
-activate :syntax,
-         :linenos => 'inline',
-         :anchorlinenos => true,
-         :linenostart => 2
+activate :syntax, :line_numbers => true
 ```
 
 ## Helper
