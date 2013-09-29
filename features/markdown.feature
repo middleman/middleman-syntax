@@ -9,8 +9,8 @@ Feature: Code blocks in markdown get highlighted
       """
     Given the Server is running at "test-app"
     When I go to "/code.html"
-    Then I should see '<span class="k">def </span>'
-    Then I should see '<pre class="highlight text">This is some code'
+    Then I should see '<span class="k">def</span>'
+    Then I should see '<pre class="highlight plaintext">This is some code'
 
   @nojava
   Scenario: Works with RedCarpet
@@ -23,6 +23,6 @@ Feature: Code blocks in markdown get highlighted
       """
     Given the Server is running at "test-app"
     When I go to "/code.html"
-    Then I should see '<span class="k">def </span>'
-    Then I should see '<pre class="highlight text">This is some code'
+    Then I should see '<span class="k">def</span>'
+    Then I should see '<pre class="highlight plaintext">This is some code'
     
