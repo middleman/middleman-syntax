@@ -37,7 +37,8 @@ module Middleman
       # A helper module for highlighting code
       def self.highlight(code, language)
         opts = ::Middleman::Syntax.options.dup
-        lexer = Rouge::Lexer.find_fancy(language, code) || Rouge::Lexers::Text
+        lexer = Rouge::Lexer.find_fancy(language, code) || Rouge::Lexers::PlainText
+        
         formatter = Rouge::Formatters::HTML.new(opts.reverse_merge({ :css_class => "highlight #{lexer.tag}" }))
         formatter.format(lexer.lex(code, opts))
       end
