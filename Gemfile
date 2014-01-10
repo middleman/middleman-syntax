@@ -1,6 +1,6 @@
 source "https://rubygems.org"
 
-gem "middleman-core", :github => "middleman/middleman", :branch => 'v3-stable'
+gem "middleman", :github => "middleman/middleman", :branch => 'v3-stable'
 
 # Specify your gem's dependencies in middleman-syntax.gemspec
 gemspec
@@ -19,6 +19,7 @@ platforms :ruby do
 end
 
 gem "kramdown"
+gem "slim"
 
 # Code Quality
 gem "cane", :platforms => [:mri_19, :mri_20], :require => false

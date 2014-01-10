@@ -56,7 +56,8 @@ module Middleman
             @_out_buf = _buf_was
           end
           content = content.encode(Encoding::UTF_8)
-          concat_content Middleman::Syntax::Highlighter.highlight(content, language)
+
+          concat_content Middleman::Syntax::Highlighter.highlight(content, language).html_safe
         end
       end
     end

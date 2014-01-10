@@ -5,6 +5,7 @@
 * Setting the :css_class option will no longer prevent the language tag from being added as a class as well.
 * Rouge lexer options should now be set via the :lexer_options option.
 * It is now possible to override options when calling the `code` helper by passing them as the second argument.
+* Using the `code` helper from Slim templates no longer escapes the output.
 
 1.2.1
 -----
