@@ -2,6 +2,11 @@
 
 `middleman-syntax` is an extension for the [Middleman] static site generator that adds syntax highlighting via [Rouge](https://github.com/jayferd/rouge).
 
+[![Gem Version](https://badge.fury.io/rb/middleman-syntax.png)][gem]
+[![Build Status](https://travis-ci.org/middleman/middleman-syntax.png)][travis]
+[![Dependency Status](https://gemnasium.com/middleman/middleman-syntax.png?travis)][gemnasium]
+[![Code Quality](https://codeclimate.com/github/middleman/middleman-syntax.png)][codeclimate]
+
 ## Installation
 
 If you're just getting started, install the `middleman` gem and generate a new project:
@@ -26,6 +31,8 @@ You can also pass options to Rouge:
 ```ruby
 activate :syntax, :line_numbers => true
 ```
+
+The full set of options can be seen on your preview server's `/__middleman/config/` page.
 
 ## Helper
 
@@ -86,23 +93,40 @@ end
 ~~~
 </pre>
 
+## Haml
+
+When using Haml, a `:code` filter is exposed for outputting highlighted code. Because Haml filters don't allow arguments, you must use a special comment to indicate the language of the code to be highlighted (or let Rouge guess):
+
+```haml
+#example
+  :code
+    # lang: ruby
+
+    def foo
+      puts 'bar'
+    end
+```
+
+With the special `# lang: <language tag>` comment on the first line, the `:code` filter is just like calling the `code` helper, but without the indentation problems that Haml might otherwise have. However, if you prefer, you can use the `code` helper along with the `:preserve` filter, as explained below.
+
 ## Indentation Problems
 
 Some templating languages, like Haml, will indent your HTML for you,
 which will mess up code formatted in `<pre>` tags. When
-using Haml, either use the
-[`find_and_preserve`](http://haml.info/docs/yardoc/Haml/Helpers.html#find_and_preserve-instance_method)
-helper, the
+using Haml, either use the `:code` filter (recommended), use the
 [`:preserve`](http://haml.info/docs/yardoc/file.REFERENCE.html#preserve-filter)
 filter, or add `set :haml, { ugly: true }` in your `config.rb` to turn off
 Haml's automatic indentation.
 
-## Build & Dependency Status
+Example of using `:preserve`:
 
-[![Gem Version](https://badge.fury.io/rb/middleman-syntax.png)][gem]
-[![Build Status](https://travis-ci.org/middleman/middleman-syntax.png)][travis]
-[![Dependency Status](https://gemnasium.com/middleman/middleman-syntax.png?travis)][gemnasium]
-[![Code Quality](https://codeclimate.com/github/middleman/middleman-syntax.png)][codeclimate]
+```haml
+- code('ruby') do
+  :preserve
+    def foo
+      puts 'bar'
+    end
+```
 
 ## Community
 

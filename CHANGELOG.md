@@ -6,6 +6,7 @@
 * Rouge lexer options should now be set via the :lexer_options option.
 * It is now possible to override options when calling the `code` helper by passing them as the second argument.
 * Using the `code` helper from Slim templates no longer escapes the output.
+* Added a `:code` filter for Haml as a more whitespace-friendly alternative to the `code` helper.
 
 1.2.1
 -----

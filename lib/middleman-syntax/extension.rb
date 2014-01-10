@@ -74,7 +74,7 @@ module Middleman
       mattr_accessor :options
 
       # A helper module for highlighting code
-      def self.highlight(code, language, opts={})
+      def self.highlight(code, language=nil, opts={})
         lexer = Rouge::Lexer.find_fancy(language, code) || Rouge::Lexers::PlainText
 
         highlighter_options = options.to_h.merge(opts)
@@ -83,6 +83,30 @@ module Middleman
 
         formatter = Rouge::Formatters::HTML.new(highlighter_options)
         formatter.format(lexer.lex(code, options.lexer_options))
+      end
+    end
+  end
+end
+
+# If Haml is around, define a :code filter that can be used to more conveniently output highlighted code.
+if defined? Haml
+  module Haml
+    module Filters
+      module Code
+        include Base
+
+        def render(code)
+          code = code.encode(Encoding::UTF_8)
+
+          # Allow language to be specified via a special comment like:
+          #  # lang: ruby
+          if code.lines.first =~ /\A\s*#\s*lang:\s*(\w+)$/
+            language = $1
+            code = code.lines.to_a[1..-1].join # Strip first line
+          end
+
+          Middleman::Syntax::Highlighter.highlight(code, language)
+        end
       end
     end
   end
