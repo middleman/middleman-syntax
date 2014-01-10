@@ -1,87 +1,87 @@
+require 'rouge'
+
 module Middleman
   module Syntax
-    class << self
+    class SyntaxExtension < Extension
+      option :css_class, 'highlight', 'Class name applied to the syntax-highlighted output.'
+      option :line_numbers, false, 'Generate line numbers.'
+      option :inline_theme, nil, 'A Rouge::CSSTheme that will be used to highlight the output with inline styles instead of using CSS classes.'
+      option :wrap, true, 'Wrap the highlighted content in a container (<pre> or <div>, depending on whether :line_numbers is on).'
+      option :lexer_options, {}, 'Options for the Rouge lexers.'
 
-      def options
-        @@options
-      end
+      def after_configuration
+        Middleman::Syntax::Highlighter.options = options
 
-      def registered(app, options_hash={})
-        require 'rouge'
-
-        @@options = options_hash
-        yield @@options if block_given?
-
-        app.send :include, Helper
-
-        app.after_configuration do
-          if markdown_engine == :redcarpet
-            require 'middleman-core/renderers/redcarpet'
-            Middleman::Renderers::MiddlemanRedcarpetHTML.send :include, MarkdownCodeRenderer
-          elsif markdown_engine == :kramdown
-            require 'kramdown'
-            Kramdown::Converter::Html.class_eval do
-              def convert_codeblock(el, indent)
-                attr = el.attr.dup
-                language = extract_code_language!(attr)
-                Middleman::Syntax::Highlighter.highlight(el.value, language)
-              end
+        if app.config[:markdown_engine] == :redcarpet
+          require 'middleman-core/renderers/redcarpet'
+          Middleman::Renderers::MiddlemanRedcarpetHTML.send :include, RedcarpetCodeRenderer
+        elsif app.config[:markdown_engine] == :kramdown
+          require 'kramdown'
+          Kramdown::Converter::Html.class_eval do
+            def convert_codeblock(el, indent)
+              attr = el.attr.dup
+              language = extract_code_language!(attr)
+              Middleman::Syntax::Highlighter.highlight(el.value, language)
             end
           end
         end
       end
-      alias :included :registered
+
+      helpers do
+        # Output highlighted code. Use like:
+        #
+        #    <% code('ruby') do %>
+        #      my code
+        #    <% end %>
+        #
+        # To produce the following structure:
+        #
+        #    <div class="highlight">
+        #      <pre>#{your code}
+        #      </pre>
+        #    </div>
+        #
+        # @param [String] language the Rouge lexer to use
+        # @param [Hash] Options to pass to the Rouge formatter & lexer, overriding global options set by :highlighter_options.
+        def code(language=nil, options={}, &block)
+          raise 'The code helper requires a block to be provided.' unless block_given?
+
+          # Save current buffer for later
+          @_out_buf, _buf_was = "", @_out_buf
+
+          begin
+            content = capture_html(&block)
+          ensure
+            # Reset stored buffer
+            @_out_buf = _buf_was
+          end
+          content = content.encode(Encoding::UTF_8)
+          concat_content Middleman::Syntax::Highlighter.highlight(content, language)
+        end
+      end
+    end
+
+    # A mixin for the Redcarpet Markdown renderer that will highlight
+    # code.
+    module RedcarpetCodeRenderer
+      def block_code(code, language)
+        Middleman::Syntax::Highlighter.highlight(code, language)
+      end
     end
 
     module Highlighter
+      mattr_accessor :options
+
       # A helper module for highlighting code
-      def self.highlight(code, language)
-        opts = ::Middleman::Syntax.options.dup
+      def self.highlight(code, language, opts={})
         lexer = Rouge::Lexer.find_fancy(language, code) || Rouge::Lexers::PlainText
-        
-        formatter = Rouge::Formatters::HTML.new(opts.reverse_merge({ :css_class => "highlight #{lexer.tag}" }))
-        formatter.format(lexer.lex(code, opts))
-      end
-    end
 
-    module Helper
+        highlighter_options = options.to_h.merge(opts)
+        highlighter_options[:css_class] = [ highlighter_options[:css_class], lexer.tag ].join(' ')
+        lexer_options = highlighter_options.delete(:lexer_options)
 
-      # Output highlighted code. Use like:
-      #
-      #    <% code('ruby') do %>
-      #      my code
-      #    <% end %>
-      #
-      # To produce the following structure:
-      #
-      #    <div class="highlight">
-      #      <pre>#{your code}
-      #      </pre>
-      #    </div>
-      #
-      # @param [String] language the Pygments lexer to use
-      def code(language=nil, &block)
-        # Save current buffer for later
-        @_out_buf, _buf_was = "", @_out_buf
-
-        begin
-          content = if block_given?
-            capture_html(&block)
-          else
-            ""
-          end
-        ensure
-          # Reset stored buffer
-          @_out_buf = _buf_was
-        end
-        content = content.encode(Encoding::UTF_8)
-        concat_content Middleman::Syntax::Highlighter.highlight(content, language)
-      end
-    end
-
-    module MarkdownCodeRenderer
-      def block_code(code, language)
-        Middleman::Syntax::Highlighter.highlight(code, language)
+        formatter = Rouge::Formatters::HTML.new(highlighter_options)
+        formatter.format(lexer.lex(code, options.lexer_options))
       end
     end
   end
