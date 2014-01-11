@@ -58,7 +58,7 @@ You can also let Rouge generate some CSS for you by creating a new stylesheet wi
 <%= Rouge::Themes::ThankfulEyes.render(:scope => '.highlight') %>
 ```
 
-Rouge has `ThankfulEyes`, `Colorful`, `Github`, `Base16`, `Base16::Solarized` (like Octopress), and `Base16::Monokai` themes.
+Rouge has `ThankfulEyes`, `Colorful`, `Github`, `Base16`, `Base16::Solarized` (like Octopress), `Base16::Monokai`, and `Monokai` themes.
 
 ## Markdown
 

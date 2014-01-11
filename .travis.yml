@@ -4,6 +4,11 @@ rvm:
   - 2.1.0
   - jruby-19mode
 
+# Bug in jRuby w/ Rouge: https://github.com/jruby/jruby/issues/1392
+matrix:
+  allow_failures:
+    - rvm: jruby-19mode
+
 script: "bundle exec rake test"
 
 env: TEST=true
