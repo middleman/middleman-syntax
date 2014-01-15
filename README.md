@@ -151,7 +151,7 @@ The best way to get quick responses to your issues and swift fixes to your bugs 
 
 ## License
 
-Copyright (c) 2012-2013 Benjamin Hollis. MIT Licensed, see [LICENSE] for details.
+Copyright (c) 2012-2014 Benjamin Hollis. MIT Licensed, see [LICENSE] for details.
 
 [middleman]: http://middlemanapp.com
 [gem]: https://rubygems.org/gems/middleman-syntax
