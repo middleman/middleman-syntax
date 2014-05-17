@@ -78,7 +78,7 @@ module Middleman
         lexer = Rouge::Lexer.find_fancy(language, code) || Rouge::Lexers::PlainText
 
         highlighter_options = options.to_h.merge(opts)
-        highlighter_options[:css_class] = [ highlighter_options[:css_class], lexer.tag ].join(' ')
+        highlighter_options[:css_class] = [ highlighter_options[:css_class], lexer.tag ].reject(&:blank?).join(' ')
         lexer_options = highlighter_options.delete(:lexer_options)
 
         formatter = Rouge::Formatters::HTML.new(highlighter_options)
