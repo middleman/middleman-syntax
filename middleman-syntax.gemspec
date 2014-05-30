@@ -16,5 +16,5 @@ Gem::Specification.new do |s|
   s.test_files = `git ls-files -z -- {fixtures,features}/*`.split("\0")
   s.require_paths = ["lib"]
   s.add_runtime_dependency("middleman-core", ["~> 3.2"])
-  s.add_runtime_dependency("rouge", ["~> 1.0"])
+  s.add_runtime_dependency("rouge", ["~> 1.4"])
 end

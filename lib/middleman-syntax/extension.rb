@@ -5,8 +5,9 @@ module Middleman
     class SyntaxExtension < Extension
       option :css_class, 'highlight', 'Class name applied to the syntax-highlighted output.'
       option :line_numbers, false, 'Generate line numbers.'
-      option :inline_theme, nil, 'A Rouge::CSSTheme that will be used to highlight the output with inline styles instead of using CSS classes.'
-      option :wrap, true, 'Wrap the highlighted content in a container (<pre> or <div>, depending on whether :line_numbers is on).'
+      option :start_line, 1, 'Index to start line numbers.'
+      option :inline_theme, nil, "A Rouge::CSSTheme used to highlight the output with inline styles instead of classes. Allows string inputs (separate mode with a dot)."
+      option :wrap, true, 'Wrap the highlighted content in a container. Defaults to <pre><code>, or <div> if line numbers are enabled.'
       option :lexer_options, {}, 'Options for the Rouge lexers.'
 
       def after_configuration
@@ -78,8 +79,13 @@ module Middleman
         lexer = Rouge::Lexer.find_fancy(language, code) || Rouge::Lexers::PlainText
 
         highlighter_options = options.to_h.merge(opts)
-        highlighter_options[:css_class] = [ highlighter_options[:css_class], lexer.tag ].join(' ')
+        if highlighter_options[:css_class].to_s.end_with? '-'
+          highlighter_options[:css_class] = [ highlighter_options[:css_class], lexer.tag ].join
+        else
+          highlighter_options[:css_class] = [ highlighter_options[:css_class], lexer.tag ].reject(&:blank?).join(' ')
+        end
         lexer_options = highlighter_options.delete(:lexer_options)
+        code.gsub!(/^    /, "\t") if lexer.tag == 'make'
 
         formatter = Rouge::Formatters::HTML.new(highlighter_options)
         formatter.format(lexer.lex(code, options.lexer_options))

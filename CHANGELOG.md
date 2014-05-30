@@ -1,4 +1,15 @@
-2.0.0 (master)
+2.1.0 (master)
+-----
+
+* Breaking: Code blocks are now also wrapped in a \<code> tag, which is consistent with Redcarpet and other markdown processors ([see the HTML5 spec](http://www.w3.org/TR/2011/WD-html5-author-20110809/the-code-element.html)).
+* Strings can now be passed to `:inline_theme` for convenience.
+* Added new `monokai.sublime` theme, designed to match Sublime Text's default theme.
+* Added `:start_line` option to configure the starting index used for line numbers.
+* Fixed bugs with `:css_class` where `false` was coerced into a string and blank spaces were sometimes added
+* Prevented adding an empty class attribute if the `:css_class` option is empty/nil/false
+* If the `:css_class` ends with a dash it will now be concatenated to the language tag. This means you can use the `language-#{lang}` prefix suggested in [the HTML5 spec](http://www.w3.org/TR/2011/WD-html5-author-20110809/the-code-element.html).
+
+2.0.0
 -----
 
 * Update to a new-style Middleman extension, dropping compatibility with Middleman versions older than 3.2.x.
