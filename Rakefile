@@ -26,6 +26,8 @@ rescue LoadError
   # warn "cane not available, quality task not provided."
 end
 
+task :default => :test
+
 desc "Build HTML documentation"
 task :doc do
   sh 'bundle exec yard'
