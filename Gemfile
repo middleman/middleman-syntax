@@ -12,6 +12,7 @@ gem "yard",     "~> 0.8.0", :require => false
 gem "cucumber", "~> 1.3.1"
 gem "fivemat"
 gem "aruba",    "~> 0.5.1"
+gem "haml"
 
 platforms :ruby do
   gem "redcarpet"

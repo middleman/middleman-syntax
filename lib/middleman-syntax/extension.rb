@@ -36,12 +36,13 @@ module Middleman
         #
         # To produce the following structure:
         #
-        #    <div class="highlight">
-        #      <pre>#{your code}
-        #      </pre>
-        #    </div>
+        #    <pre class="highlight ruby">
+        #      <code>#{your code}</code>
+        #    </pre>
         #
-        # @param [String] language the Rouge lexer to use
+        # If no language is provided, then the language name is `plaintext`.
+        #
+        # @param [String] language that the Rouge lexer should use
         # @param [Hash] Options to pass to the Rouge formatter & lexer, overriding global options set by :highlighter_options.
         def code(language=nil, options={}, &block)
           raise 'The code helper requires a block to be provided.' unless block_given?

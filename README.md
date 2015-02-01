@@ -36,7 +36,11 @@ The full set of options can be seen on your preview server's `/__middleman/confi
 
 ## Helper
 
-The extension adds a new `code` helper to Middleman that you can use from your templates:
+The extension adds a new `code` helper to Middleman that you can use from your
+templates. It will  produce syntax-highlighted HTML wrapped in `<pre
+class="highlight language-name"><code>...html...</code></pre>`.
+
+In Erb, use `<%` tags (not `<%=` tags):
 
 ```erb
 <% code("ruby") do %>
@@ -46,7 +50,14 @@ end
 <% end %>
 ```
 
-That'll produce syntax-highlighted HTML wrapped in `<pre class="highlight ruby">`.
+In Haml, use `=`, not `-`:
+
+```haml
+= code('ruby') do
+  puts "hello"
+```
+
+For more on Haml syntax, see the "Haml" section below.
 
 ## CSS
 
