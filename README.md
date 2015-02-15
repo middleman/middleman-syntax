@@ -58,7 +58,7 @@ end
 
 For more on Haml syntax, see the "Haml" section below.
 
-The `code` helper supports [Rouge](https://github.com/jayferd/rouge) instance formatter options such as:
+The `code` helper supports [Rouge](https://github.com/jayferd/rouge) instance formatter options. These override the defaults set in your `config.rb`. Example options include:
 
 * `line_numbers`
 * `start_line`
@@ -68,12 +68,14 @@ The `code` helper supports [Rouge](https://github.com/jayferd/rouge) instance fo
 To use these formatter options per code block, include them in a hash as the second argument. e.g.
 
 ```erb
-<% code("ruby", {:line_numbers => true, :start_line => 7}) do %>
+<% code("ruby", :line_numbers => true, :start_line => 7) do %>
 def my_cool_method(message)
   puts message
 end
 <% end %>
 ```
+
+
 
 ## CSS
 
