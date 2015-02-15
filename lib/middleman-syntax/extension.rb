@@ -61,7 +61,7 @@ module Middleman
           end
           content = content.encode(Encoding::UTF_8)
 
-          concat_content Middleman::Syntax::Highlighter.highlight(content, language).html_safe
+          concat_content Middleman::Syntax::Highlighter.highlight(content, language, options).html_safe
         end
       end
     end
