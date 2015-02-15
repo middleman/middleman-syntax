@@ -11,3 +11,11 @@ h1 Whatever
 = code
   |
     This is some code
+
+h1 Options
+
+= code('ruby', {:line_numbers => true, :start_line => 7}) do
+  |
+    def foo(bar)
+      puts "baz"
+    end
