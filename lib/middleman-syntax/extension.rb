@@ -8,6 +8,7 @@ module Middleman
     class SyntaxExtension < Extension
       option :css_class, 'highlight', 'Class name applied to the syntax-highlighted output.'
       option :line_numbers, false, 'Generate line numbers.'
+      option :start_line, 1, 'Start the line numbering (if enabled) at the desired integer'
       option :inline_theme, nil, 'A Rouge::CSSTheme that will be used to highlight the output with inline styles instead of using CSS classes.'
       option :wrap, true, 'Wrap the highlighted content in a container (<pre> or <div>, depending on whether :line_numbers is on).'
       option :lexer_options, {}, 'Options for the Rouge lexers.'
@@ -33,7 +34,7 @@ module Middleman
       helpers do
         # Output highlighted code. Use like:
         #
-        #    <% code('ruby') do %>
+        #    <% code('ruby', :line_numbers => true, :start_line => 7) do %>
         #      my code
         #    <% end %>
         #
