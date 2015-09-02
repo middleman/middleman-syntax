@@ -59,6 +59,14 @@ In Haml, use `=`, not `-`:
 
 For more on Haml syntax, see the "Haml" section below.
 
+In Slim:
+
+```slim
+= code('ruby') do
+  |
+    puts 'hello'
+```
+
 ## CSS
 
 On a default (i.e. unstyled) Middleman project, it will appear as if `middleman-syntax` isn't working, since obviously no CSS has been applied to color your code. You can use any Pygments-compatible stylesheet to style your code.
