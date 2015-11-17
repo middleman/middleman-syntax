@@ -77,6 +77,8 @@ You can also let Rouge generate some CSS for you by creating a new stylesheet wi
 <%= Rouge::Themes::ThankfulEyes.render(:scope => '.highlight') %>
 ```
 
+To prevent the stylesheet from being recognized as a html page source when running `middleman buid`, add an underscore at the beginning of the filename or add `ignore "/this/file/path.css.erb"` to config.rb.
+
 Rouge has `ThankfulEyes`, `Colorful`, `Github`, `Base16`, `Base16::Solarized` (like Octopress), `Base16::Monokai`, and `Monokai` themes.
 
 ## Markdown
