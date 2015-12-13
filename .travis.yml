@@ -1,15 +1,15 @@
 rvm:
-  - 1.9.3
-  - 2.0.0
-  - 2.1.0
-  - 2.2.0
-  - jruby-19mode
-
-# Bug in jRuby w/ Rouge: https://github.com/jruby/jruby/issues/1392
+  - ruby-head
+  - 2.2.2
+  - 2.1
+  - 2.0
+os:
+  - linux
+  # - osx
 matrix:
+  fast_finish: true
   allow_failures:
-    - rvm: jruby-19mode
-
+    - rvm: ruby-head
 script: "bundle exec rake test"
 
 env: TEST=true
