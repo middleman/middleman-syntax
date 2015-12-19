@@ -50,7 +50,7 @@ end
 <% end %>
 ```
 
-In Haml, use `=`, not `-`:
+*Note:* In Haml, use `=`, not `-`:
 
 ```haml
 = code('ruby') do
@@ -65,6 +65,23 @@ In Slim:
 = code('ruby') do
   |
     puts 'hello'
+```
+
+The `code` helper supports [Rouge](https://github.com/jayferd/rouge) instance formatter options. These override the defaults set in your `config.rb`. Example options include:
+
+* `line_numbers`
+* `start_line`
+* `css_class`
+* `wrap`
+
+To use these formatter options per code block, include them in a hash as the second argument. e.g.
+
+```erb
+<% code("ruby", :line_numbers => true, :start_line => 7) do %>
+def my_cool_method(message)
+  puts message
+end
+<% end %>
 ```
 
 ## CSS
