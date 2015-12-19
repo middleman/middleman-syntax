@@ -1,4 +1,11 @@
-2.0.0 (master)
+2.1.0
+-----
+
+* Version compatibility with Middleman 4. #58
+* Allow passing Rouge formatter options from the `code` helper. #50.
+* Fixed tests and code reorganization.
+
+2.0.0
 -----
 
 * Update to a new-style Middleman extension, dropping compatibility with Middleman versions older than 3.2.x.
