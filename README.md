@@ -2,10 +2,10 @@
 
 `middleman-syntax` is an extension for the [Middleman] static site generator that adds syntax highlighting via [Rouge](https://github.com/jayferd/rouge).
 
-[![Gem Version](https://badge.fury.io/rb/middleman-syntax.png)][gem]
-[![Build Status](https://travis-ci.org/middleman/middleman-syntax.png)][travis]
-[![Dependency Status](https://gemnasium.com/middleman/middleman-syntax.png?travis)][gemnasium]
-[![Code Quality](https://codeclimate.com/github/middleman/middleman-syntax.png)][codeclimate]
+[![Gem Version](https://badge.fury.io/rb/middleman-syntax.svg)][gem]
+[![Build Status](https://travis-ci.org/middleman/middleman-syntax.svg)][travis]
+[![Dependency Status](https://gemnasium.com/middleman/middleman-syntax.svg?travis)][gemnasium]
+[![Code Quality](https://codeclimate.com/github/middleman/middleman-syntax.svg)][codeclimate]
 
 ## Installation
 
