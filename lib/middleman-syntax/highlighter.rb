@@ -12,7 +12,7 @@ module Middleman
         lexer_options = highlighter_options.delete(:lexer_options)
 
         formatter = Rouge::Formatters::HTML.new(highlighter_options)
-        formatter.format(lexer.lex(code, options.lexer_options))
+        formatter.format(lexer.lex(code, lexer_options))
       end
     end
   end
