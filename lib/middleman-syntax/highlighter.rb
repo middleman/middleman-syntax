@@ -5,9 +5,6 @@ module Middleman
 
       # A helper module for highlighting code
       def self.highlight(code, language=nil, opts={})
-        if "plain" == language
-          options[:line_numbers] = false
-        end
         lexer = Rouge::Lexer.find_fancy(language, code) || Rouge::Lexers::PlainText
 
         highlighter_options = options.to_h.merge(opts)

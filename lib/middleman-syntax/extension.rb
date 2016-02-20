@@ -2,6 +2,7 @@ require 'rouge'
 require 'middleman-syntax/highlighter'
 require 'middleman-syntax/redcarpet_code_renderer'
 require 'middleman-syntax/haml_monkey_patch'
+require 'middleman-syntax/language_parameter_parser.rb'
 
 module Middleman
   module Syntax
@@ -15,7 +16,6 @@ module Middleman
 
       def after_configuration
         Middleman::Syntax::Highlighter.options = options
-
         if app.config[:markdown_engine] == :redcarpet
           require 'middleman-core/renderers/redcarpet'
           Middleman::Renderers::MiddlemanRedcarpetHTML.send :include, RedcarpetCodeRenderer
