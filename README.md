@@ -121,6 +121,18 @@ end
 ```
 </pre>
 
+You can also disable the line numbers on a specific code block. However, this is Middleman-syntax specific feature, which only works when using Redcarpert.
+
+Disabling the line numbers on a code block:
+
+<pre>
+```ruby?line_numbers=false
+def my_cool_method(message)
+  puts message
+end
+```
+</pre>
+
 or with Kramdown:
 
 <pre>
