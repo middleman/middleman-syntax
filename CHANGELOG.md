@@ -1,3 +1,10 @@
+3.0.0
+-----
+
+* Upgrade to Rouge 2.0. #66.
+* Added the ability to disable the line numbers on a specific code block when using Markdown and Redcarpet. #63.
+* Lexer options are properly passed down to the highlighter.
+
 2.1.0
 -----
 
