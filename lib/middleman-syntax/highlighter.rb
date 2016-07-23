@@ -1,3 +1,5 @@
+require 'middleman-syntax/formatters'
+
 module Middleman
   module Syntax
     module Highlighter
@@ -11,7 +13,7 @@ module Middleman
         highlighter_options[:css_class] = [ highlighter_options[:css_class], lexer.tag ].join(' ')
         lexer_options = highlighter_options.delete(:lexer_options)
 
-        formatter = Rouge::Formatters::HTML.new(highlighter_options)
+        formatter = Middleman::Syntax::Formatters::HTML.new(highlighter_options)
         formatter.format(lexer.lex(code, lexer_options))
       end
     end
