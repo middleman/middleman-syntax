@@ -100,7 +100,7 @@ Rouge has `ThankfulEyes`, `Colorful`, `Github`, `Base16`, `Base16::Solarized` (l
 
 ## Markdown
 
-The extension also makes code blocks in Markdown produce highlighted code. Make sure you're using RedCarpet or Kramdown as your Markdown engine (in `config.rb`):
+The extension also makes code blocks in Markdown produce highlighted code. Make sure you're using Redcarpet or Kramdown as your Markdown engine (in `config.rb`):
 
 ```ruby
 set :markdown_engine, :redcarpet
@@ -121,7 +121,7 @@ end
 ```
 </pre>
 
-You can also disable the line numbers on a specific code block. However, this is Middleman-syntax specific feature, which only works when using Redcarpert.
+You can also disable the line numbers on a specific code block. However, this is Middleman-syntax specific feature, which only works when using Redcarpet.
 
 Disabling the line numbers on a code block:
 
