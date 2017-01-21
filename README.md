@@ -88,13 +88,13 @@ end
 
 On a default (i.e. unstyled) Middleman project, it will appear as if `middleman-syntax` isn't working, since obviously no CSS has been applied to color your code. You can use any Pygments-compatible stylesheet to style your code.
 
-You can also let Rouge generate some CSS for you by creating a new stylesheet with a `.css.erb` extension in your Middleman project, and then including:
+You can also let Rouge generate some CSS for you by creating a new stylesheet with a `.css.erb` extension in your Middleman project (at a path like `source/stylesheets/highlighting.css.erb` with the contents:
 
 ```erb
 <%= Rouge::Themes::ThankfulEyes.render(:scope => '.highlight') %>
 ```
 
-To prevent the stylesheet from being recognized as a html page source when running `middleman build`, add an underscore at the beginning of the filename or add `ignore "/this/file/path.css.erb"` to config.rb.
+If you want to include this in a larger Sass stylesheet, name it with an underscore (`source/stylesheets/_highlighting.css.erb`) and include it in your main stylesheet with `@import 'highlighting'`).
 
 Rouge has `ThankfulEyes`, `Colorful`, `Github`, `Base16`, `Base16::Solarized` (like Octopress), `Base16::Monokai`, and `Monokai` themes.
 
