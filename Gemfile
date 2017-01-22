@@ -21,3 +21,6 @@ end
 
 # Code Quality
 gem "cane", :platforms => [:mri_19, :mri_20], :require => false
+
+# For old rubies
+gem 'nokogiri', ['~> 1.5', '< 1.7']
