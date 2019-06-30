@@ -1,11 +1,9 @@
 rvm:
   - ruby-head
-  - 2.2.2
-  - 2.1
-  - 2.0
+  - 2.6.3
+  - 2.5.5
 os:
   - linux
-  # - osx
 matrix:
   fast_finish: true
   allow_failures:
