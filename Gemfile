@@ -1,6 +1,6 @@
 source "https://rubygems.org"
 
-gem "middleman-core", :github => "middleman/middleman", :branch => 'v3-stable'
+gem "middleman-core", :git => "https://github.com/middleman/middleman.git", :branch => '4.x'
 
 # Specify your gem's dependencies in middleman-syntax.gemspec
 gemspec
@@ -14,6 +14,7 @@ gem 'pry', '~> 0.10', group: :development
 gem 'aruba', '~> 0.10.0'
 gem 'rspec', '~> 3.0'
 gem 'cucumber', '~> 2.0'
+gem 'capybara', '~> 2.5.0'
 
 platforms :ruby do
   gem "redcarpet"
