@@ -12,6 +12,8 @@ module Middleman
                        end
 
           @formatter = Rouge::Formatters::HTMLTable.new(@formatter, opts) if opts[:line_numbers]
+        
+          @formatter = Rouge::Formatters::HTMLLinewise.new(@formatter, class:'line-%i') if opts[:line_numbers_div]
 
           if opts.fetch(:wrap, true)
             @formatter = Rouge::Formatters::HTMLPygments.new(@formatter, opts.fetch(:css_class, 'codehilite'))

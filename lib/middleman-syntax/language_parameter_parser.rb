@@ -9,6 +9,9 @@ module Middleman
           if attribute == "line_numbers" and value == "false"
             return { line_numbers: false }
           end
+          if attribute == "line_numbers_div" and value == "false"
+            return { line_numbers_div: false }
+          end
         end
         {}
       end
