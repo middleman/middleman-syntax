@@ -1,3 +1,5 @@
+- Fixed HAML :code filter to remove trailing blank lines
+
 # 3.2.0
 
 - Prep for Middleman v5

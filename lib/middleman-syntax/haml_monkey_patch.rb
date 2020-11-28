@@ -6,6 +6,7 @@ if defined? Haml
         include Base
 
         def render(code)
+          code = code.rstrip
           code = code.encode(Encoding::UTF_8)
 
           # Allow language to be specified via a special comment like:
