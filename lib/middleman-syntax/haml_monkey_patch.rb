@@ -1,4 +1,5 @@
 # If Haml is around, define a :code filter that can be used to more conveniently output highlighted code.
+
 if defined? Haml
   module HamlMonkeyPatch
     def render(code)
@@ -16,11 +17,11 @@ if defined? Haml
     end
   end
 
-  if Gem::Version.new(Haml::VERSION) >= Gem::Version.new("6.0.0.beta.1")
+  if Gem::Version.new(Haml::VERSION) >= Gem::Version.new("6.0.0")
     module Haml
       class Filters
         class Code < Base
-          include HamlMonkeyPatch
+          extend HamlMonkeyPatch
         end
       end
     end
@@ -28,7 +29,8 @@ if defined? Haml
     module Haml
       module Filters
         module Code
-          include Base, HamlMonkeyPatch
+          include Base
+          extend HamlMonkeyPatch
         end
       end
     end
