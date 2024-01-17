@@ -1,6 +1,6 @@
 source "https://rubygems.org"
 
-gem "middleman-core", :git => "https://github.com/middleman/middleman.git", :branch => '4.x'
+gem "middleman-core", git: "https://github.com/middleman/middleman.git"
 
 # Specify your gem's dependencies in middleman-syntax.gemspec
 gemspec
@@ -11,17 +11,17 @@ gem 'yard', '~> 0.8', require: false
 
 # Test tools
 gem 'pry', '~> 0.10', group: :development
-gem 'aruba', '~> 0.10.0'
+gem 'aruba', '~> 1.0.0'
 gem 'rspec', '~> 3.0'
 gem 'cucumber', '~> 2.0'
 gem 'capybara', '~> 2.5.0'
-
-platforms :ruby do
-  gem "redcarpet"
-end
+gem 'haml', '< 6'
+gem 'slim', '< 5'
+gem 'kramdown'
+gem "redcarpet"
 
 # Code Quality
-gem "cane", :platforms => [:mri_19, :mri_20], :require => false
+gem "cane", require: false
 
-# For old rubies
-gem 'nokogiri', ['~> 1.5', '< 1.7']
+# For old Rubies
+gem 'nokogiri', '~> 1.12.0'
