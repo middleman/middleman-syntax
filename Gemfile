@@ -16,7 +16,7 @@ gem 'rspec', '~> 3.0'
 gem 'cucumber', '~> 2.0'
 gem 'capybara', '~> 2.5.0'
 gem 'haml', '< 7'
-gem 'slim', '< 5'
+gem 'slim', '>= 3', '< 5'
 gem 'kramdown'
 gem "redcarpet"
 
