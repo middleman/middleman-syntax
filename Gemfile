@@ -20,8 +20,5 @@ gem 'slim', '>= 3', '< 5'
 gem 'kramdown'
 gem "redcarpet"
 
-# Code Quality
-gem "cane", require: false
-
 # For old Rubies
 gem 'nokogiri', '~> 1.12.0'
