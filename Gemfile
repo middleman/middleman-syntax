@@ -15,7 +15,7 @@ gem 'aruba', '~> 1.0.0'
 gem 'rspec', '~> 3.0'
 gem 'cucumber', '~> 2.0'
 gem 'capybara', '~> 2.5.0'
-gem 'haml', '< 7'
+gem 'haml', RUBY_VERSION > '3.0' ? '< 7' : '< 6'
 gem 'slim', '>= 3', '< 5'
 gem 'kramdown'
 gem "redcarpet"
