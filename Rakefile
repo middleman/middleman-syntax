@@ -1,6 +1,4 @@
-require 'bundler'
-Bundler::GemHelper.install_tasks
-
+require 'bundler/gem_tasks'
 require 'cucumber/rake/task'
 
 Cucumber::Rake::Task.new(:cucumber, 'Run features that should pass') do |t|
@@ -9,10 +7,7 @@ Cucumber::Rake::Task.new(:cucumber, 'Run features that should pass') do |t|
   t.cucumber_opts = "--color --tags ~@wip #{exempt_tags} --strict --format #{ENV['CUCUMBER_FORMAT'] || 'pretty'}"
 end
 
-require 'rake/clean'
-
 task :test => ["cucumber"]
-
 task :default => :test
 
 desc "Build HTML documentation"
