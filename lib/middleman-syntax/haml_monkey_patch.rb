@@ -21,8 +21,14 @@ if defined? Haml
     module Haml
       class Filters
         class Code < Base
-          extend HamlMonkeyPatch
+          include HamlMonkeyPatch
+
+          def compile(node)
+            [:static, render(node.value[:text])]
+          end
         end
+
+        register :code, Code
       end
     end
   else
