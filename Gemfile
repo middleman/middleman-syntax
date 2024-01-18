@@ -6,8 +6,8 @@ gem "middleman-core", git: "https://github.com/middleman/middleman.git"
 gemspec
 
 # Build and doc tools
-gem 'rake', '~> 10.3', require: false
-gem 'yard', '~> 0.8', require: false
+gem 'rake', '~> 13.1', require: false
+gem 'yard', '~> 0.9', require: false
 
 # Test tools
 gem 'pry', '~> 0.10', group: :development
@@ -15,7 +15,7 @@ gem 'aruba', '~> 1.0.0'
 gem 'rspec', '~> 3.0'
 gem 'cucumber', '~> 2.0'
 gem 'capybara', '~> 2.5.0'
-gem 'haml', '< 6'
+gem 'haml', '< 7'
 gem 'slim', '< 5'
 gem 'kramdown'
 gem "redcarpet"
