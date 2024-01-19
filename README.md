@@ -15,9 +15,7 @@ gem install middleman
 middleman init MY_PROJECT
 ```
 
-If you already have a Middleman project: Add `gem "middleman-syntax"` to your `Gemfile` and run `bundle install`.
-
-**This plugin will not work on Ruby 1.8!** Rouge requires 1.9+, so we do too.
+If you already have a Middleman project, add `gem "middleman-syntax"` to your `Gemfile` and run `bundle install`.
 
 ## Configuration
 
@@ -204,5 +202,5 @@ Copyright (c) 2012-2014 Benjamin Hollis. MIT Licensed, see [LICENSE] for details
 
 [middleman]: http://middlemanapp.com
 [gem]: https://rubygems.org/gems/middleman-syntax
-[travis]: http://travis-ci.org/middleman/middleman-syntax
+[codeclimate]: https://codeclimate.com/github/middleman/middleman-syntax
 [LICENSE]: https://github.com/middleman/middleman-syntax/blob/master/LICENSE.md
