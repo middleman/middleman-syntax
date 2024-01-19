@@ -1,28 +1,27 @@
 # 3.4.0
 
-- Haml 6 support
-- Migrate CI from Travis to GitHub Actions
-- Fixed HAML :code filter to remove trailing blank lines
+- Haml 6 support (#82 & #84).
+- Migrate CI from Travis to GitHub Actions (#83).
 
 # 3.3.0
 
-- Remove trailing blank lines from HAML's :code filter
-- Allow for Linewise Rouge formatter
+- Remove trailing blank lines from HAML's :code filter (#79).
+- Allow for Linewise Rouge formatter (#78).
 
 # 3.2.0
 
-- Prep for Middleman v5
+- Prep for Middleman v5.
 
 # 3.0.0
 
-- Upgrade to Rouge 2.0. #66.
-- Added the ability to disable the line numbers on a specific code block when using Markdown and Redcarpet. #63.
+- Upgrade to Rouge 2.0 (#66).
+- Added the ability to disable the line numbers on a specific code block when using Markdown and Redcarpet (#63).
 - Lexer options are properly passed down to the highlighter.
 
 # 2.1.0
 
-- Version compatibility with Middleman 4. #58
-- Allow passing Rouge formatter options from the `code` helper. #50.
+- Version compatibility with Middleman 4 (#58).
+- Allow passing Rouge formatter options from the `code` helper (#50).
 - Fixed tests and code reorganization.
 
 # 2.0.0
@@ -41,17 +40,17 @@
 # 1.2.0
 
 - Support Kramdown as Markdown engine in addition to Redcarpet.
-- Switch to Rouge from Pygments.rb
+- Switch to Rouge from Pygments.rb.
 - Fix bugs around setting language options.
 
 # 1.1.1
 
-- Properly merge language attribute for Markdown. #14
+- Properly merge language attribute for Markdown (#14).
 
 # 1.1.0
 
-- Avoid errors when language is empty. #9
-- Allow passing options to Pygments. #5 & #7
+- Avoid errors when language is empty (#9).
+- Allow passing options to Pygments (#5 & #7).
 
 # 1.0.1
 
