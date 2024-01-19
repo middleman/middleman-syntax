@@ -1,4 +1,13 @@
+# 3.4.0
+
+- Haml 6 support
+- Migrate CI from Travis to GitHub Actions
 - Fixed HAML :code filter to remove trailing blank lines
+
+# 3.3.0
+
+- Remove trailing blank lines from HAML's :code filter
+- Allow for Linewise Rouge formatter
 
 # 3.2.0
 
