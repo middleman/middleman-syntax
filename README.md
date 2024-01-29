@@ -85,15 +85,21 @@ end
 
 On a default (i.e. unstyled) Middleman project, it will appear as if `middleman-syntax` isn't working, since obviously no CSS has been applied to color your code. You can use any Pygments-compatible stylesheet to style your code.
 
-You can also let Rouge generate some CSS for you by creating a new stylesheet with a `.css.erb` extension in your Middleman project (at a path like `source/stylesheets/highlighting.css.erb` with the contents:
+You can also let Rouge generate some CSS for you by creating a new stylesheet with a `.css.erb` extension in your Middleman project (at a path like `source/stylesheets/highlighting.css.erb`) with the contents:
 
 ```erb
 <%= Rouge::Themes::ThankfulEyes.render(:scope => '.highlight') %>
 ```
 
-If you want to include this in a larger Sass stylesheet, name it with an underscore (`source/stylesheets/_highlighting.css.erb`) and include it in your main stylesheet with `@import 'highlighting'`).
+And then include it in your layout or specific page by:
 
-Rouge has `ThankfulEyes`, `Colorful`, `Github`, `Base16`, `Base16::Solarized` (like Octopress), `Base16::Monokai`, and `Monokai` themes.
+```erb
+<%= stylesheet_link_tag "highlighting" %>
+```
+
+If you want to include this in a larger Sass stylesheet, include it in your main stylesheet with `@import 'highlighting.css'`).
+
+Rouge has `ThankfulEyes`, `Colorful`, `Github`, `Base16`, `Base16::Solarized`, `Base16::Monokai`, and `Monokai` themes.
 
 ## Markdown
 
@@ -108,7 +114,7 @@ set :markdown, :fenced_code_blocks => true, :smartypants => true
 set :markdown_engine, :kramdown
 ```
 
-Now your Markdown will work just like it does [on GitHub](http://github.github.com/github-flavored-markdown/) - you can write something like this with Redcarpet:
+Now your Markdown will work just like it does [on GitHub](https://docs.github.com/en/get-started/writing-on-github) - you can write something like this with Redcarpet:
 
 <pre>
 ```ruby
