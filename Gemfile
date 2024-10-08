@@ -11,7 +11,6 @@ gem 'yard', '~> 0.9', require: false
 
 # Test tools
 gem 'aruba'
-gem 'rspec'
 gem 'cucumber'
 gem 'capybara'
 
