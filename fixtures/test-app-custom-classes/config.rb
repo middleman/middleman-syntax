@@ -1,0 +1,1 @@
+activate :syntax, :classes => ["custom-class", "another-class"] 
