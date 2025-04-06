@@ -7,14 +7,13 @@ gem "middleman-core", "~> 4.3.11"
 gemspec
 
 # Build and doc tools
-gem 'rake', '~> 12.3.3', require: false
+gem 'rake', '~> 13.1', require: false
 gem 'yard', '~> 0.9', require: false
 
 # Test tools
-# Using older version to avoid conflicts with middleman
-gem 'aruba', '~> 0.14.14'
-gem 'cucumber', '~> 4.1.0'
-gem 'capybara', '~> 3.35.0'
+gem 'aruba'
+gem 'cucumber'
+gem 'capybara'
 
 # Optional dependencies, included for tests
 gem 'haml', RUBY_VERSION > '3.0' ? '< 7' : '< 6'
