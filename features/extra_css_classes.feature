@@ -1,10 +1,10 @@
-Feature: Custom classes for the wrapper div
+Feature: Extra css classes for the pre tag
 
-  Scenario: Custom classes from configuration
-    Given a fixture app "test-app-custom-classes"
+  Scenario: Extra css classes from configuration
+    Given a fixture app "test-app-extra-css-classes"
     And a file named "config.rb" with:
       """
-      activate :syntax, :classes => ["custom-class", "another-class"]
+      activate :syntax, :extra_css_classes => ["custom-class", "another-class"]
       """
     And a file named "source/index.html.erb" with:
       """
@@ -18,11 +18,11 @@ Feature: Custom classes for the wrapper div
     When I go to "/index.html"
     Then I should see '<pre class="highlight ruby custom-class another-class"><code>'
 
-  Scenario: Custom classes as a string
-    Given a fixture app "test-app-custom-classes"
+  Scenario: Extra css classes as a string
+    Given a fixture app "test-app-extra-css-classes"
     And a file named "config.rb" with:
       """
-      activate :syntax, :classes => "custom-class another-class"
+      activate :syntax, :extra_css_classes => "custom-class another-class"
       """
     And a file named "source/index.html.erb" with:
       """
@@ -36,15 +36,15 @@ Feature: Custom classes for the wrapper div
     When I go to "/index.html"
     Then I should see '<pre class="highlight ruby custom-class another-class"><code>'
 
-  Scenario: Custom classes via helper options
-    Given a fixture app "test-app-custom-classes"
+  Scenario: Extra css classes via helper options
+    Given a fixture app "test-app-extra-css-classes"
     And a file named "config.rb" with:
       """
       activate :syntax
       """
     And a file named "source/index.html.erb" with:
       """
-      <% code("ruby", :classes => ["helper-class", "another-helper-class"]) do %>
+      <% code("ruby", :extra_css_classes => ["helper-class", "another-helper-class"]) do %>
       def my_method
         puts "Hello"
       end

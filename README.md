@@ -29,13 +29,13 @@ You can also pass options to Rouge:
 activate :syntax, :line_numbers => true
 ```
 
-You can add custom CSS classes to the code blocks:
+You can add extra css classes to the pre tag elements:
 
 ```ruby
-activate :syntax, :classes => ["custom-class", "another-class"]
+activate :syntax, :extra_css_classes => ["custom-class", "another-class"]
 ```
 
-This will add the custom classes to the `<pre>` element in the generated HTML:
+This will add the extra css classes to the `<pre>` element in the generated HTML:
 
 ```html
 <div class="highlight"><pre class="highlight language-name custom-class another-class"><code>...</code></pre></div>
@@ -82,7 +82,7 @@ The `code` helper supports [Rouge](https://github.com/jayferd/rouge) instance fo
 * `start_line`
 * `css_class`
 * `wrap`
-* `classes`
+* `extra_css_classes`
 
 To use these formatter options per code block, include them in a hash as the second argument. e.g.
 
@@ -94,10 +94,10 @@ end
 <% end %>
 ```
 
-You can also add custom CSS classes to specific code blocks:
+You can also add extra css   classes to specific code blocks:
 
 ```erb
-<% code("ruby", :classes => ["custom-class", "special"]) do %>
+<% code("ruby", :extra_css_classes => ["custom-class", "special"]) do %>
 def my_cool_method(message)
   puts message
 end

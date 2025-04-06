@@ -19,10 +19,10 @@ module Middleman
             css_class = opts.fetch(:css_class, 'codehilite')
             
             # Add custom classes to the pre element
-            if opts[:classes] && !opts[:classes].empty?
-              custom_classes = opts[:classes].is_a?(Array) ? opts[:classes] : opts[:classes].to_s.split
+            if opts[:extra_css_classes] && !opts[:extra_css_classes].empty?
+              extra_css_classes = opts[:extra_css_classes].is_a?(Array) ? opts[:extra_css_classes] : opts[:extra_css_classes].to_s.split
               # Include the custom classes in the css_class parameter
-              css_class = [css_class].concat(custom_classes).join(' ')
+              css_class = [css_class].concat(extra_css_classes).join(' ')
             end
             
             @formatter = Rouge::Formatters::HTMLPygments.new(@formatter, css_class)
