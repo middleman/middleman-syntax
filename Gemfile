@@ -1,7 +1,6 @@
 source "https://rubygems.org"
 
-# Use a specific version compatible with Ruby 2.7.2
-gem "middleman-core", "~> 4.3.11"
+gem "middleman-core", git: "https://github.com/middleman/middleman.git"
 
 # Specify your gem's dependencies in middleman-syntax.gemspec
 gemspec
