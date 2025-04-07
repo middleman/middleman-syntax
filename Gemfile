@@ -16,7 +16,7 @@ gem 'capybara'
 
 # Optional dependencies, included for tests
 gem 'haml', RUBY_VERSION > '3.0' ? '< 7' : '< 6'
-gem 'slim', '>= 3', '< 5'
+gem 'slim'
 gem 'kramdown'
 gem 'redcarpet'
-gem 'rack', '< 3'
+gem 'rack'
