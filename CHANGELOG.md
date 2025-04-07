@@ -2,6 +2,11 @@
 
 All notable changes to this project will be documented in this file.
 
+# 3.5.0
+
+- Remove official support for Ruby 2.5 and 2.6 (#89).
+- Add ability to add other classes to the :syntax plugin (#90).
+
 # 3.4.0
 
 - Haml 6 support (#82, #84).
