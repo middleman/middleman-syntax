@@ -15,4 +15,5 @@ doc
 tmp
 Makefile
 .mm-pid-*
+.bundle
 vendor/bundle
