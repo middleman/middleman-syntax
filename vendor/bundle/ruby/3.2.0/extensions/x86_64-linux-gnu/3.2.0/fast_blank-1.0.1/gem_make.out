@@ -1,0 +1,18 @@
+current directory: /home/runner/work/middleman-syntax/middleman-syntax/vendor/bundle/ruby/3.2.0/gems/fast_blank-1.0.1/ext/fast_blank
+/usr/bin/ruby3.2 -I/usr/lib/ruby/vendor_ruby extconf.rb
+creating Makefile
+
+current directory: /home/runner/work/middleman-syntax/middleman-syntax/vendor/bundle/ruby/3.2.0/gems/fast_blank-1.0.1/ext/fast_blank
+make DESTDIR\= sitearchdir\=./.gem.20250722-3377-mdezyx sitelibdir\=./.gem.20250722-3377-mdezyx clean
+
+current directory: /home/runner/work/middleman-syntax/middleman-syntax/vendor/bundle/ruby/3.2.0/gems/fast_blank-1.0.1/ext/fast_blank
+make DESTDIR\= sitearchdir\=./.gem.20250722-3377-mdezyx sitelibdir\=./.gem.20250722-3377-mdezyx
+compiling fast_blank.c
+linking shared-object fast_blank.so
+
+current directory: /home/runner/work/middleman-syntax/middleman-syntax/vendor/bundle/ruby/3.2.0/gems/fast_blank-1.0.1/ext/fast_blank
+make DESTDIR\= sitearchdir\=./.gem.20250722-3377-mdezyx sitelibdir\=./.gem.20250722-3377-mdezyx install
+/usr/bin/install -c -m 0755 fast_blank.so ./.gem.20250722-3377-mdezyx
+
+current directory: /home/runner/work/middleman-syntax/middleman-syntax/vendor/bundle/ruby/3.2.0/gems/fast_blank-1.0.1/ext/fast_blank
+make DESTDIR\= sitearchdir\=./.gem.20250722-3377-mdezyx sitelibdir\=./.gem.20250722-3377-mdezyx clean
