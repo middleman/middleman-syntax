@@ -1,10 +1,10 @@
 # Middleman-Syntax
 
-`middleman-syntax` is an extension for the [Middleman] static site generator that adds syntax highlighting via [Rouge](https://github.com/jayferd/rouge).
+`middleman-syntax` is an extension for the [Middleman](https://middlemanapp.com) static site generator that adds syntax highlighting via [Rouge](https://github.com/jayferd/rouge).
 
-[![Gem Version](https://badge.fury.io/rb/middleman-syntax.svg)][gem]
+[![Gem Version](https://badge.fury.io/rb/middleman-syntax.svg)](https://rubygems.org/gems/middleman-syntax)
 [![CI](https://github.com/middleman/middleman-syntax/actions/workflows/ci.yml/badge.svg)](https://github.com/middleman/middleman-syntax/actions/workflows/ci.yml)
-[![Code Quality](https://codeclimate.com/github/middleman/middleman-syntax.svg)][codeclimate]
+[![Maintainability](https://qlty.sh/gh/middleman/projects/middleman-syntax/maintainability.svg)](https://qlty.sh/gh/middleman/projects/middleman-syntax)
 
 ## Installation
 
@@ -59,7 +59,7 @@ end
 <% end %>
 ```
 
-*Note:* In Haml, use `=`, not `-`:
+**NOTE:** In Haml, use `=`, not `-`:
 
 ```haml
 = code('ruby') do
@@ -105,6 +105,7 @@ end
 ```
 
 This will produce HTML like:
+
 ```html
 <div class="highlight"><pre class="highlight ruby custom-class special"><code>...</code></pre></div>
 ```
@@ -125,7 +126,7 @@ And then include it in your layout or specific page by:
 <%= stylesheet_link_tag "highlighting" %>
 ```
 
-If you want to include this in a larger Sass stylesheet, include it in your main stylesheet with `@import 'highlighting.css'`).
+If you want to include this in a larger Sass stylesheet, include it in your main stylesheet with `@import 'highlighting.css'`.
 
 Rouge has `ThankfulEyes`, `Colorful`, `Github`, `Base16`, `Base16::Solarized`, `Base16::Monokai`, and `Monokai` themes.
 
@@ -232,9 +233,4 @@ The best way to get quick responses to your issues and swift fixes to your bugs 
 
 ## License
 
-Copyright (c) 2012-2014 Benjamin Hollis. MIT Licensed, see [LICENSE] for details.
-
-[middleman]: http://middlemanapp.com
-[gem]: https://rubygems.org/gems/middleman-syntax
-[codeclimate]: https://codeclimate.com/github/middleman/middleman-syntax
-[LICENSE]: https://github.com/middleman/middleman-syntax/blob/master/LICENSE.md
+Copyright (c) 2012-2014 Benjamin Hollis. MIT Licensed, see [LICENSE](LICENSE.md) for details.
