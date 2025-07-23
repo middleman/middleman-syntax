@@ -2,6 +2,10 @@
 
 All notable changes to this project will be documented in this file.
 
+# 3.6.0
+
+- Lexer options don't get passed to lexer (#92).
+
 # 3.5.0
 
 - Remove official support for Ruby 2.5 and 2.6 (#89).
