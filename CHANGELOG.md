@@ -2,6 +2,10 @@
 
 All notable changes to this project will be documented in this file.
 
+# 3.6.1
+
+- Add fix for lexer_options potentially being nil (#94).
+
 # 3.6.0
 
 - Lexer options don't get passed to lexer (#92).
