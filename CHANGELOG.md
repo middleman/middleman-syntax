@@ -2,6 +2,10 @@
 
 All notable changes to this project will be documented in this file.
 
+# 3.6.2
+
+- Support Ruby 4 by allowing Rouge 4.x (#94).
+
 # 3.6.1
 
 - Add fix for lexer_options potentially being nil (#94).
